@@ -3,7 +3,6 @@ import {
   useRef,
   useLayoutEffect,
   useCallback,
-  useReducer,
   useState,
 } from "react";
 import ReactReduxContext from "../Context";
@@ -15,7 +14,6 @@ const connect = (mapStateToProps, mapDispatchToProps) => {
       // 记录上次渲染参数
       const lastChildProps = useRef();
       const store = useContext(ReactReduxContext);
-
       const [, forceComponentUpdateDispatch] = useState(0);
 
       // 组装最终的props
