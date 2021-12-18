@@ -1,11 +1,22 @@
-import React, { useContext } from "react";
 import "./App.css";
-import "./redux.js";
-import textContext from "./testContext";
+import connect from "./reactRedux/connect";
+// import "./redux.js";
 
 function App(props) {
-  const ctx = useContext(textContext);
-  return ctx.color;
+  const { count, sub, add } = props;
+  return (
+    <>
+      {count}
+      <button onClick={add}>+1</button>
+      <button onClick={sub}>-1</button>
+    </>
+  );
 }
 
-export default App;
+export default connect(
+  (state) => ({ count: state.count }),
+  (dispatch) => ({
+    sub: () => dispatch({ type: "sub" }),
+    add: () => dispatch({ type: "add" }),
+  })
+)(App);

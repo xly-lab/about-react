@@ -2,19 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App1 from "./App1";
 import "./index.css";
+import ReactReduxProvider from "./reactRedux/Provider";
 import reportWebVitals from "./reportWebVitals";
-import { default as TextContext } from "./testContext";
-
-const theme = {
-  color: "#dd1aa",
-};
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <Provider store={store}> */}
-    <TextContext.Provider value={theme}>
+    <ReactReduxProvider store={store}>
       <App1 />
-    </TextContext.Provider>{" "}
+    </ReactReduxProvider>{" "}
     {/* </Provider> */}{" "}
   </React.StrictMode>,
   document.getElementById("root")
